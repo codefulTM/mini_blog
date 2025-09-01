@@ -40,9 +40,11 @@ export default function Auth() {
           body: JSON.stringify({ email, password, name }),
         });
 
+        console.log(response);
+
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.message || "Failed to sign up.");
+          throw new Error(errorData.error || "Failed to sign up.");
         }
 
         // Automatically sign in after signing up
